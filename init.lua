@@ -16,40 +16,15 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require('lazy').setup({
-{
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
-    -- Optional image support for file preview: See `# Preview Mode` for more information.
-    -- {"3rd/image.nvim", opts = {}},
-    -- OR use snacks.nvim's image module:
-    -- "folke/snacks.nvim",
-  },
-  lazy = false, -- neo-tree will lazily load itself
-  ---@module "neo-tree"
-  ---@type neotree.Config?
-  opts = {
-    -- add options here
-  }
-},
-{
-'shaunsingh/nord.nvim',
-lazy = false,
-config = function()
-	-- config in lua
-	vim.g.nord_contrast = true
-	vim.g.nord_borders = false
-	vim.g.nord_disable_background = false
-	vim.g.nord_italic = false
-	vim.g.nord_uniform_diff_background = true
-	vim.g.nord_bold = false
-
-	-- Load the colorscheme
-	vim.cmd.colorscheme('nord')
-
-end
-}
+    require 'plugins.neotree',
+    require 'plugins.colortheme',
+    require 'plugins.bufferline',
+    require 'plugins.lualine',
+    require 'plugins.treesitter',
+    require 'plugins.telescope',
+    --require 'plugins.lsp'
+    require 'plugins.autocompletion',
+    require 'plugins.gitsigns',
+    require 'plugins.alpha',
+    require 'plugins.indent-blankline'
 })
